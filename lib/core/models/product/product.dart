@@ -13,7 +13,7 @@ class Product {
   String? slug;
   String description;
   double? weight;
-  String? rating;
+  double? rating;
   String? how_to_use;
   int number_of_reviews;
   bool is_on_sale;

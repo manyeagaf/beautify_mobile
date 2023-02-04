@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomeModel extends ChangeNotifier {
+  ViewState _state = ViewState.Idle;
+  ViewState get state => _state;
+
   final productApi = ProductApi();
   List<Product> _products = [];
   List<Product> get products => _products;
@@ -24,25 +27,28 @@ class HomeModel extends ChangeNotifier {
 
   Future get getCategories async {
     try {
-      _isLoading = true;
+      _state = ViewState.Busy;
       _categories = await productApi.getCategories();
-      _isLoading = false;
+      _state = ViewState.Idle;
+      ;
     } catch (e) {
       _error = true;
       _errorMessage = e.toString();
     }
-
     notifyListeners();
   }
 
   Future get getProducts async {
     try {
-      _isLoading = true;
+      _state = ViewState.Busy;
+
       _products = await productApi.getProducts();
-      _isLoading = false;
+      _state = ViewState.Idle;
+      ;
     } catch (e) {
       _error = true;
       _errorMessage = e.toString();
+      print(_errorMessage);
     }
     notifyListeners();
   }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name = "app_name">beautify</string>
+    <string name="facebook_app_id">595627678349336</string>
+    <string name="fb_login_protocol_scheme">fb595627678349336</string>
+    <string name="facebook_client_token">efb35db10400069022c091a215c9c3d5</string>
+</resources>
+

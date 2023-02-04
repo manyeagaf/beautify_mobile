@@ -54,7 +54,7 @@ class _CartItemCardState extends State<CartItemCard> {
                 height: MediaQuery.of(context).size.height * 0.18,
                 fit: BoxFit.contain,
                 image: NetworkImage(
-                    'http://10.0.2.2:8000' + widget.orderItem.image),
+                    'http://127.0.0.1:8000' + widget.orderItem.image),
               ),
               SizedBox(
                 width: 5.0,

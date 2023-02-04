@@ -1,7 +1,9 @@
 import 'package:badges/badges.dart';
+import 'package:beautify/core/enum/view_state.dart';
 import 'package:beautify/ui/shared/app_colors.dart';
 import 'package:beautify/ui/widgets/cart/card_item_card.dart';
 import 'package:beautify/ui/widgets/cart/payment_details_card.dart';
+import 'package:beautify/ui/widgets/home/carousel_section_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -82,8 +84,9 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: Consumer<CartModel>(
         builder: (context, value, child) {
-          return value.isLoading
-              ? CircularProgressIndicator()
+          value.getPaymentDetails;
+          return value.state == ViewState.Busy
+              ? CarouselSectionShimmer()
               : value.orderItems.length == 0
                   ? Center(child: Text("Your cart is empty"))
                   : Column(
@@ -168,7 +171,9 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                                 SizedBox(height: 10.0),
                                 PaymentDetailsCard(
-                                  orderItems: value.orderItems,
+                                  bag_total: value.bagTotal,
+                                  shipping_price: value.shippingPrice,
+                                  grand_total: value.grandTotal,
                                 ),
                                 SizedBox(
                                   height: 50.0,

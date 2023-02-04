@@ -42,7 +42,7 @@ class _CaruoselBuilderState extends State<CaruoselBuilder> {
             enlargeCenterPage: true,
             viewportFraction: 1,
             pageSnapping: true,
-            height: MediaQuery.of(context).size.height * 0.35,
+            height: MediaQuery.of(context).size.height * 0.2,
             autoPlay: widget.autoplay,
             onPageChanged: (index, reason) {
               setState(

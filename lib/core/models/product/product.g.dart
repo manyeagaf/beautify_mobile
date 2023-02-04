@@ -11,9 +11,9 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       json['name'] as String,
       json['slug'] as String?,
       json['description'] as String,
-      json['weight'] as double?,
-      json['rating'] as String?,
-      json['how_to_use'] as String,
+      (json['weight'] as num?)?.toDouble(),
+      (json['rating'] as num?)?.toDouble(),
+      json['how_to_use'] as String?,
       json['number_of_reviews'] as int,
       json['is_on_sale'] as bool,
       json['store_price'] as String,
@@ -23,11 +23,14 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       json['image3'] as String?,
       json['image4'] as String?,
       Category.fromJson(json['category'] as Map<String, dynamic>),
-      Brand.fromJson(json['brand'] as Map<String, dynamic>),
+      json['brand'] == null
+          ? null
+          : Brand.fromJson(json['brand'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
       'slug': instance.slug,
       'description': instance.description,
       'weight': instance.weight,

@@ -141,13 +141,13 @@ class _ProductDetailState extends State<ProductDetail>
                                   horizontal: 20.0, vertical: 10.0),
                               child: CaruoselBuilder(
                                 imgUrls: [
-                                  'http://10.0.2.2:8000' +
+                                  'http://127.0.0.1:8000' +
                                       widget.product.image1!,
-                                  'http://10.0.2.2:8000' +
+                                  'http://127.0.0.1:8000' +
                                       widget.product.image2!,
-                                  'http://10.0.2.2:8000' +
+                                  'http://127.0.0.1:8000' +
                                       widget.product.image3!,
-                                  'http://10.0.2.2:8000' +
+                                  'http://127.0.0.1:8000' +
                                       widget.product.image4!
                                 ],
                                 autoplay: false,
@@ -237,7 +237,7 @@ class _ProductDetailState extends State<ProductDetail>
                           Icon(Icons.star_border_outlined),
                           Icon(Icons.star_border_outlined),
                           Icon(Icons.star_border_outlined),
-                          Text(widget.product.rating!),
+                          Text(widget.product.rating.toString()!),
                         ],
                       ),
                     ),

@@ -56,7 +56,7 @@ class _CategoryCardState extends State<CategoryCard> {
                       width: 50.0,
                       height: 50.0,
                       image: NetworkImage(
-                          'http://10.0.2.2:8000' + widget.category.image),
+                          'http://127.0.0.1:8000' + widget.category.image),
                     ),
                   ),
                 ],

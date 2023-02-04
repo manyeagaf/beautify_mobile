@@ -42,7 +42,10 @@ class _ProductCardState extends State<ProductCard> {
                 color: Colors.redAccent,
               ),
               Row(
-                children: [Text("4.4"), Icon(Icons.star_border_outlined)],
+                children: [
+                  Text(widget.product.rating.toString()!),
+                  Icon(Icons.star_border_outlined)
+                ],
               ),
             ],
           ),
@@ -53,7 +56,7 @@ class _ProductCardState extends State<ProductCard> {
                   child: Image(
                     fit: BoxFit.contain,
                     image: NetworkImage(
-                        'http://10.0.2.2:8000${widget.product.image1}'),
+                        'http://127.0.0.1:8000' + widget.product.image1!),
                   ),
                 ),
               ],

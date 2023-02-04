@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:beautify/constants.dart';
 import 'package:beautify/core/models/product/category.dart';
 import 'package:beautify/core/services/api.dart';
@@ -12,9 +13,9 @@ class ProductApi {
   //Get all the products
   Future<List<Product>> getProducts() async {
     try {
-      Response response = await _dio.get(baseUrl + 'products');
-
-      var products = response.data as List;
+      Response response = await _dio.get(baseUrl + 'products/');
+      print(response.data['results']);
+      var products = response.data['results'] as List;
 
       return products.map((e) => Product.fromJson(e)).toList();
     } on DioError catch (e) {
@@ -44,7 +45,7 @@ class ProductApi {
   Future<List<Product>> getCategoryProducts(String slug) async {
     try {
       Response response = await _dio.get(baseUrl + 'products/category/' + slug);
-      var products = response.data as List;
+      var products = response.data["results"] as List;
       return products.map((e) => Product.fromJson(e)).toList();
     } on DioError catch (e) {
       throw e.message;

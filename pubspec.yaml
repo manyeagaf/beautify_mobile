@@ -44,6 +44,8 @@ dependencies:
   sqflite: ^2.1.0
   path: ^1.8.2
   badges: ^2.0.3
+  shimmer: ^2.0.0
+  flutter_facebook_auth: ^5.0.4
 
 dev_dependencies:
   flutter_test:
@@ -72,25 +74,25 @@ flutter:
   assets:
     - assets/images/
   
-  fonts:
-  - family: Pacifico
-    fonts:
-      - asset: assets/fonts/Pacifico-Regular.ttf
+  # fonts:
+  # - family: Pacifico
+  #   fonts:
+  #     - asset: assets/fonts/Pacifico-Regular.ttf
 
 
-  - family: Source Sans Pro
-    fonts:
-      - asset: assets/fonts/SourceSansPro-Regular.ttf
+  # - family: Source Sans Pro
+  #   fonts:
+  #     - asset: assets/fonts/SourceSansPro-Regular.ttf
 
       
-  - family: Source Sans Pro Black
-    fonts:
-      - asset: assets/fonts/SourceSansPro-Black.ttf
+  # - family: Source Sans Pro Black
+  #   fonts:
+  #     - asset: assets/fonts/SourceSansPro-Black.ttf
 
 
-  - family: Roboto 
-    fonts:
-      - asset: assets/fonts/Roboto-BoldItalic.ttf
+  # - family: Roboto 
+  #   fonts:
+  #     - asset: assets/fonts/Roboto-BoldItalic.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

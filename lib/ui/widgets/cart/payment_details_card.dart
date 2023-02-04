@@ -6,21 +6,16 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class PaymentDetailsCard extends StatefulWidget {
-  final List<OrderItem> orderItems;
-  PaymentDetailsCard({required this.orderItems});
-  @override
-  State<PaymentDetailsCard> createState() => _PaymentDetailsCardState();
-}
-
-class _PaymentDetailsCardState extends State<PaymentDetailsCard> {
-  double bagTotal = 0.0;
+class PaymentDetailsCard extends StatelessWidget {
+  final double bag_total;
+  final double shipping_price;
+  final double grand_total;
+  PaymentDetailsCard(
+      {required this.bag_total,
+      required this.shipping_price,
+      required this.grand_total});
   @override
   Widget build(BuildContext context) {
-    bagTotal = 0.0;
-    widget.orderItems.forEach((orderItem) {
-      bagTotal += orderItem.price * orderItem.quantity;
-    });
     return Container(
       // padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       width: double.infinity,
@@ -59,7 +54,7 @@ class _PaymentDetailsCardState extends State<PaymentDetailsCard> {
                   ),
                 ),
                 Text(
-                  "\$${bagTotal}",
+                  this.bag_total.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
                   ),
@@ -79,7 +74,7 @@ class _PaymentDetailsCardState extends State<PaymentDetailsCard> {
                   ),
                 ),
                 Text(
-                  "\$${bagTotal}",
+                  this.bag_total.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
                   ),
@@ -99,7 +94,7 @@ class _PaymentDetailsCardState extends State<PaymentDetailsCard> {
                   ),
                 ),
                 Text(
-                  bagTotal >= 1000.0 ? "Free" : "\$65",
+                  this.shipping_price.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
                   ),
@@ -120,9 +115,7 @@ class _PaymentDetailsCardState extends State<PaymentDetailsCard> {
                   ),
                 ),
                 Text(
-                  bagTotal >= 1000.0 || bagTotal == 0.0
-                      ? "\$${bagTotal}"
-                      : "\$${bagTotal + 65}",
+                  this.grand_total.toString(),
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ],
