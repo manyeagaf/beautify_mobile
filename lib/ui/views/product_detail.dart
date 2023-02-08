@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:beautify/constants.dart';
 import 'package:beautify/core/models/order/order_item.dart';
 import 'package:beautify/core/models/product/product.dart';
@@ -13,7 +12,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/ticker_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:badges/badges.dart' as badges;
 import 'cart_screen.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -73,7 +72,7 @@ class _ProductDetailState extends State<ProductDetail>
                     ),
                   );
                 },
-                icon: Badge(
+                icon: badges.Badge(
                   badgeContent: Text(
                     value.orderItems.length.toString(),
                     style: TextStyle(

@@ -27,8 +27,7 @@ import 'package:shimmer/shimmer.dart';
 import '../shared/app_colors.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:badges/badges.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../widgets/home/carousel_section_shimmer.dart';
 import '../widgets/home/category_section_shimmer.dart';
 import '../widgets/product/product_shimmer.dart';
@@ -88,7 +87,7 @@ class _HomeState extends State<Home> {
             ListTile(
               title: Text("STORES"),
               onTap: () {
-                signInWithFacebook();
+                // signInWithFacebook();
               },
             ),
             Divider(
@@ -186,7 +185,7 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           },
-                          icon: Badge(
+                          icon: badges.Badge(
                             badgeContent: Text(
                               Provider.of<CartModel>(context, listen: true)
                                   .orderItems

@@ -1,3 +1,5 @@
+import 'package:beautify/core/services/auth/google_sign_in.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -33,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _accessToken = accessToken;
       setState(() {
         _userData = userData;
+        print(_userData);
       });
     } else {
       _login();
@@ -46,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       final userData = await FacebookAuth.instance.getUserData();
       _userData = userData;
+      print(_userData);
     } else {
       print(results.status);
       print(results.message);
@@ -61,6 +65,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                _logout();
+              },
+              child: Text("Logout"),
+            ),
+            TextButton(
+              onPressed: () async {
+                await GoogleSignInApi.login();
+              },
+              child: Text("Logout"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

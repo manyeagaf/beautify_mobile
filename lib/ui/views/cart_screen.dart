@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:beautify/core/enum/view_state.dart';
 import 'package:beautify/ui/shared/app_colors.dart';
 import 'package:beautify/ui/widgets/cart/card_item_card.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import '../../core/models/order/order_item.dart';
 import '../../core/viewmodels/cart_model.dart';
+import 'package:badges/badges.dart' as badges;
 
 class CartScreen extends StatefulWidget {
   static String id = 'cart_screen';
@@ -63,7 +63,7 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               );
             },
-            icon: Badge(
+            icon: badges.Badge(
               badgeContent: Text(
                 Provider.of<CartModel>(context, listen: true)
                     .orderItems

@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:beautify/core/models/product/category.dart';
 import 'package:beautify/core/viewmodels/home_model.dart';
 import 'package:beautify/ui/views/cart_screen.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../../core/models/product/sub_category.dart';
 import '../../core/viewmodels/cart_model.dart';
 import '../shared/app_colors.dart';
@@ -38,7 +37,9 @@ class _ShopState extends State<Shop> {
             backgroundColor: kBackgroundColor,
             elevation: 0.0,
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                (context);
+              },
               color: Colors.black,
               icon: Icon(
                 Icons.arrow_back,
@@ -73,7 +74,7 @@ class _ShopState extends State<Shop> {
                     ),
                   );
                 },
-                icon: Badge(
+                icon: badges.Badge(
                   badgeContent: Text(
                     Provider.of<CartModel>(context, listen: true)
                         .orderItems
