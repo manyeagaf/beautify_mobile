@@ -20,7 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _checkIfIsLoggedIn();
   }
 
   _checkIfIsLoggedIn() async {
@@ -28,11 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _checking = false;
     });
-
     if (accessToken != null) {
-      print(accessToken.toJson());
       final userData = await FacebookAuth.instance.getUserData();
       _accessToken = accessToken;
+      print(accessToken.toJson());
       setState(() {
         _userData = userData;
         print(_userData);
@@ -46,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final LoginResult results = await FacebookAuth.instance.login();
     if (results.status == LoginStatus.success) {
       _accessToken = results.accessToken;
+      print(_accessToken);
 
       final userData = await FacebookAuth.instance.getUserData();
       _userData = userData;
@@ -78,7 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextButton(
               onPressed: () async {
-                await GoogleSignInApi.login();
+                final cred = await GoogleSignInApi.login();
+                final ggAuth = await cred!.authentication;
+                print(cred);
+                print(ggAuth.accessToken);
               },
               child: Text("Logout"),
             ),
