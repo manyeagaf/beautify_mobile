@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:beautify/core/services/api/order_api.dart';
 import 'package:beautify/core/services/auth/google_sign_in.dart';
+import 'package:beautify/ui/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -69,20 +73,86 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-              onPressed: () {
-                _logout();
-              },
-              child: Text("Logout"),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 45.0,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(kPrimaryColor)),
+                onPressed: () {},
+                child: Text(
+                  "Create Account",
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-            TextButton(
-              onPressed: () async {
-                final cred = await GoogleSignInApi.login();
-                final ggAuth = await cred!.authentication;
-                print(cred);
-                print(ggAuth.accessToken);
-              },
-              child: Text("Logout"),
+            SizedBox(
+              height: 8.0,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 2.0,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Or",
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 2.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              "Continue with social login",
+              style: TextStyle(fontSize: 20.0),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    backgroundImage:
+                        AssetImage("assets/images/facebook_logo.png"),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    backgroundImage:
+                        AssetImage("assets/images/google_logo.png"),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

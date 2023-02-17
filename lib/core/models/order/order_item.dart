@@ -1,10 +1,18 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'order_item.g.dart';
+
+@JsonSerializable()
 class OrderItem {
+  int? id;
   final int product;
   final String name;
   final int quantity;
-  final double price;
+  final String price;
   final String image;
+  int? order;
   OrderItem({
+    this.id,
+    this.order,
     required this.product,
     required this.name,
     required this.quantity,
@@ -23,8 +31,8 @@ class OrderItem {
 
   // Implement toString to make it easier to see information about
   // each dog when using the print statement.
-  @override
-  String toString() {
-    return 'Expense{product: $product, name: $name, quantity: $quantity,price:$price,image:$image}';
-  }
+  factory OrderItem.fromJson(Map<String, dynamic> json) =>
+      _$OrderItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderItemToJson(this);
 }

@@ -4,10 +4,10 @@ part 'shipping_address.g.dart';
 
 @JsonSerializable()
 class ShippingAddress {
-  String address;
-  String postal_code;
-  String city;
-  String country;
+  String? address;
+  String? postal_code;
+  String? city;
+  String? country;
   ShippingAddress(
     this.address,
     this.postal_code,

@@ -64,7 +64,7 @@ class CartModel extends ChangeNotifier {
     _bagTotal = 0.0;
     _shippingPrice = 0.0;
     for (int i = 0; i < orderItems.length; i++) {
-      _bagTotal += orderItems[i].price * orderItems[i].quantity;
+      _bagTotal += double.parse(orderItems[i].price!) * orderItems[i].quantity;
     }
 
     if (_bagTotal < 1000) {

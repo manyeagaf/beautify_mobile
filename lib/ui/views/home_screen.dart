@@ -25,6 +25,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import 'profile_screen.dart';
 import '../shared/app_colors.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
@@ -48,12 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static List<Widget> _pages = <Widget>[
     Home(),
     Shop(),
-    Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 3: Settings',
-    ),
+    ProfileScreen(),
+    ProfileScreen(),
   ];
   void _onItemTapped(int index) {
     setState(() {

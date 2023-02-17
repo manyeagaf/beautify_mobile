@@ -59,7 +59,7 @@ class DatabaseService {
           product: maps[i]['product'],
           name: maps[i]['name'],
           quantity: maps[i]['quantity'],
-          price: maps[i]['price'],
+          price: maps[i]['price'].toString(),
           image: maps[i]['image']);
     });
   }

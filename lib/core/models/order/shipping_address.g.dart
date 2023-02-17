@@ -8,10 +8,10 @@ part of 'shipping_address.dart';
 
 ShippingAddress _$ShippingAddressFromJson(Map<String, dynamic> json) =>
     ShippingAddress(
-      json['address'] as String,
-      json['postal_code'] as String,
-      json['city'] as String,
-      json['country'] as String,
+      json['address'] as String?,
+      json['postal_code'] as String?,
+      json['city'] as String?,
+      json['country'] as String?,
     );
 
 Map<String, dynamic> _$ShippingAddressToJson(ShippingAddress instance) =>

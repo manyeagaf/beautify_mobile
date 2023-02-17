@@ -6,6 +6,8 @@ import 'package:beautify/core/enum/view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/product/brand.dart';
+
 class HomeModel extends ChangeNotifier {
   ViewState _state = ViewState.Idle;
   ViewState get state => _state;
@@ -15,7 +17,8 @@ class HomeModel extends ChangeNotifier {
   List<Product> get products => _products;
   List<Category> _categories = [];
   List<Category> get categories => _categories;
-
+  List<Brand> _brands = [];
+  List<Brand> get brands => _brands;
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
@@ -50,6 +53,13 @@ class HomeModel extends ChangeNotifier {
       _errorMessage = e.toString();
       print(_errorMessage);
     }
+    notifyListeners();
+  }
+
+  Future get getBrands async {
+    _state = ViewState.Busy;
+    _brands = await productApi.getBrands();
+    _state = ViewState.Idle;
     notifyListeners();
   }
 }

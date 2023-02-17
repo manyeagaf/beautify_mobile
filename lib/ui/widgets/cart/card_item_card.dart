@@ -188,7 +188,7 @@ class _CartItemCardState extends State<CartItemCard> {
               ),
               Spacer(),
               Text(
-                "\$${widget.orderItem.price * widget.orderItem.quantity}",
+                "\$${double.parse(widget.orderItem.price) * widget.orderItem.quantity}",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,

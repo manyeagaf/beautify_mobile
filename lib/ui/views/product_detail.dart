@@ -183,44 +183,45 @@ class _ProductDetailState extends State<ProductDetail>
                                         MediaQuery.of(context).size.width * .4,
                                   ),
                                   Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.3,
-                                      decoration: BoxDecoration(
-                                        color: kPrimaryColor,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10.0),
-                                          bottomRight: Radius.circular(10.0),
-                                        ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    decoration: BoxDecoration(
+                                      color: kPrimaryColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.0),
+                                        bottomRight: Radius.circular(10.0),
                                       ),
-                                      child: Consumer<CartModel>(
-                                        builder: (context, value, child) {
-                                          return IconButton(
-                                            onPressed: () async {
-                                              final cartModel = CartModel();
-                                              final orderItem = OrderItem(
-                                                product: widget.product.id,
-                                                name: widget.product.name,
-                                                quantity: 1,
-                                                price: double.parse(
-                                                    widget.product.store_price),
-                                                image: widget.product.image1!,
-                                              );
-                                              await value
-                                                  .addOrderItem(orderItem);
-                                              await value.getOrderItems;
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          CartScreen()));
-                                            },
-                                            icon: Icon(
-                                              Icons.shopping_bag_outlined,
-                                              color: kBackgroundColor,
-                                            ),
-                                          );
-                                        },
-                                      )),
+                                    ),
+                                    child: Consumer<CartModel>(
+                                      builder: (context, value, child) {
+                                        return IconButton(
+                                          onPressed: () async {
+                                            final cartModel = CartModel();
+                                            final orderItem = OrderItem(
+                                              product: widget.product.id,
+                                              name: widget.product.name,
+                                              quantity: 1,
+                                              price:
+                                                  (widget.product.store_price),
+                                              image: widget.product.image1!,
+                                            );
+                                            await value.addOrderItem(orderItem);
+                                            await value.getOrderItems;
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) => CartScreen(),
+                                              ),
+                                            );
+                                          },
+                                          icon: Icon(
+                                            Icons.shopping_bag_outlined,
+                                            color: kBackgroundColor,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

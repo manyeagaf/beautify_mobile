@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:beautify/core/enum/view_state.dart';
+import 'package:beautify/core/viewmodels/order_model.dart';
 import 'package:beautify/ui/shared/app_colors.dart';
+import 'package:beautify/ui/views/checkout_screen.dart';
 import 'package:beautify/ui/widgets/cart/card_item_card.dart';
 import 'package:beautify/ui/widgets/cart/payment_details_card.dart';
 import 'package:beautify/ui/widgets/home/carousel_section_shimmer.dart';
@@ -8,6 +12,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import '../../core/models/order/order_item.dart';
+import '../../core/models/order/shipping_address.dart';
 import '../../core/viewmodels/cart_model.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -82,12 +87,12 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ],
       ),
-      body: Consumer<CartModel>(
-        builder: (context, value, child) {
-          value.getPaymentDetails;
-          return value.state == ViewState.Busy
+      body: Consumer2<CartModel, OrderModel>(
+        builder: (context, cartModel, orderModel, child) {
+          cartModel.getPaymentDetails;
+          return cartModel.state == ViewState.Busy
               ? CarouselSectionShimmer()
-              : value.orderItems.length == 0
+              : cartModel.orderItems.length == 0
                   ? Center(child: Text("Your cart is empty"))
                   : Column(
                       children: [
@@ -100,7 +105,7 @@ class _CartScreenState extends State<CartScreen> {
                               shrinkWrap: true,
                               children: [
                                 Column(
-                                  children: _buildCartItems(value),
+                                  children: _buildCartItems(cartModel),
                                 ),
                                 SizedBox(),
                                 Container(
@@ -171,9 +176,9 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                                 SizedBox(height: 10.0),
                                 PaymentDetailsCard(
-                                  bag_total: value.bagTotal,
-                                  shipping_price: value.shippingPrice,
-                                  grand_total: value.grandTotal,
+                                  bag_total: cartModel.bagTotal,
+                                  shipping_price: cartModel.shippingPrice,
+                                  grand_total: cartModel.grandTotal,
                                 ),
                                 SizedBox(
                                   height: 50.0,
@@ -255,7 +260,28 @@ class _CartScreenState extends State<CartScreen> {
                                   style: TextButton.styleFrom(
                                       backgroundColor: kPrimaryColor,
                                       fixedSize: Size(0, 55.0)),
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => CheckoutScreen()));
+                                    final orderItems = cartModel.orderItems;
+                                    print(jsonEncode(orderItems));
+                                    var shipping_address = ShippingAddress(
+                                        "address",
+                                        "2097421",
+                                        "City",
+                                        "Country");
+
+                                    var data = {
+                                      "shipping_address":
+                                          jsonEncode(shipping_address),
+                                      "order_items": jsonEncode(orderItems),
+                                      "payment_method": "MoMo",
+                                      "total_price": 900,
+                                    };
+                                    await orderModel.placeOrder(data);
+                                  },
                                   child: Row(
                                     children: [
                                       Text(

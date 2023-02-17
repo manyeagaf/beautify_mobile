@@ -5,6 +5,7 @@ import 'package:beautify/core/services/api.dart';
 import 'package:dio/dio.dart';
 
 import '../../models/order/order.dart';
+import '../../models/product/brand.dart';
 import '../../models/product/product.dart';
 
 class ProductApi {
@@ -57,6 +58,16 @@ class ProductApi {
       Response response = await _dio.get(baseUrl + 'products/category/all/');
       var categories = response.data as List;
       return categories.map((e) => Category.fromJson(e)).toList();
+    } on DioError catch (e) {
+      throw e.message;
+    }
+  }
+
+  Future<List<Brand>> getBrands() async {
+    try {
+      Response response = await _dio.get(baseUrl + 'products/brands/all/');
+      var brands = response.data as List;
+      return brands.map((e) => Brand.fromJson(e)).toList();
     } on DioError catch (e) {
       throw e.message;
     }

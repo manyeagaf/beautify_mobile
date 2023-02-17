@@ -2,6 +2,7 @@ import 'package:beautify/core/viewmodels/base_model.dart';
 import 'package:beautify/core/viewmodels/cart_model.dart';
 import 'package:beautify/core/viewmodels/category_model.dart';
 import 'package:beautify/core/viewmodels/home_model.dart';
+import 'package:beautify/core/viewmodels/order_model.dart';
 import 'package:beautify/ui/shared/app_colors.dart';
 import 'package:beautify/ui/views/cart_screen.dart';
 import 'package:beautify/ui/views/home_screen.dart';
@@ -21,6 +22,7 @@ void main() async {
         ChangeNotifierProvider<HomeModel>(create: (_) => HomeModel()),
         ChangeNotifierProvider<CategoryModel>(create: (_) => CategoryModel()),
         ChangeNotifierProvider<CartModel>(create: (_) => CartModel()),
+        ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),
       ],
       child: MyApp(),
     ),
@@ -37,10 +39,23 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Beautify',
       theme: ThemeData(
+        primaryColor: kPrimaryColor,
+        colorScheme: ColorScheme.light(
+          primary: kPrimaryColor,
+        ),
+        accentColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
         backgroundColor: kBackgroundColor,
+        inputDecorationTheme: const InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 1, color: kPrimaryColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 1, color: kPrimaryColor),
+          ),
+        ),
       ),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }
