@@ -69,7 +69,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             value: PaymentMethod.MoMo,
             group: _paymentMehod,
             title: "MoMo",
-            img_url: 'assets/images/facebook_logo.png',
+            img_url: 'assets/images/momo.jpeg',
             on_change: (PaymentMethod? value) {
               setState(() {
                 _paymentMehod = value!;
